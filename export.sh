@@ -21,4 +21,11 @@ ENV=$1
 conda activate $ENV
 
 set -eu
+
+# Export current stable conda environment
 conda env export > $ENV.yml
+
+# Add exported environment to git repository, commit and push back to GitHub
+git add $ENV.yml
+git commit -m "Export $ENV.yml"
+git push
